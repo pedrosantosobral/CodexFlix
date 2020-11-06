@@ -1,0 +1,31 @@
+﻿@model FirstWebApp.ViewModels.CustomersListViewModel
+
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>CustomerList</h3>
+<div class="container">
+    <p></p>
+    @if (Model.Customers.Count == 0)
+    {
+        <h6>We dont have any Customers</h6>
+    }
+    @if (Model.Customers.Count > 0)
+    {
+        <table id="clientsTableList" class="table table-bordered table-hover">
+            <tr>
+                <th><h6><strong>Client Name</strong></h6></th>
+            </tr>
+            @foreach (var customer in Model.Customers)
+            {
+            <tr>
+                <td>@customer.Name</td>
+            </tr>
+            }
+        </table>
+    }
+    </div>
+
