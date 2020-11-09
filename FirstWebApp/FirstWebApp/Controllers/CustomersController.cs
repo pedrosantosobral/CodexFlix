@@ -16,23 +16,29 @@ namespace FirstWebApp.Controllers
              new Customer {Name = "Maria Alberta",Id = 2}
         };
 
-
         // GET: Customers
         public ActionResult Index()
         {
             return View();
         }
-        [Route("CustomersList")]
+        [Route("Customers")]
         public ActionResult CustomerList()
         {
             var customersList = new CustomersListViewModel() { Customers = customers };
             return View(customersList);
         }
-        [Route("Details/{id}")]
+        [Route("Customers/Details/{id}")]
         public ActionResult CustomerInfo(int id)
         {
+            var customer = new Customer();
 
-            return View();
+            if(id != 0)
+            {
+                customer = customers[id - 1];
+            }
+            
+            return View(customer);
         }
+
     }
 }
